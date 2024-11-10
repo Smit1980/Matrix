@@ -1,70 +1,70 @@
-тело {
-  маржа: 0;
-  фоном: #000;
-  перепольное: скрытый;
-  цвет: белый;
- семейство шрифтов: Ариаль, без засечек;
-  позиция: относительный;
+body {
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+  color: white;
+  font-family: Arial, sans-serif;
+  position: relative;
 }
 
-хольст {
-  позиция: фиксировой;
-  топ: 0;
-  шлева: 0;
-  ширина: 100%;
-  высота: 100%;
-  з-индекс: 0; /* Хольст Находятсья на Заднем План */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Холст находится на заднем плане */
 }
 
-заголовок, основой {
-  позиция: относительный;
-  з-индекс: 1; /* Элементы выше холлстата */
+header, main {
+  position: relative;
+  z-index: 1; /* Элементы выше холста */
 }
 
-заголовок {
- выравнивое: центр;
- маргинальный верх: 20пх;
- маргинальное дно: 20пх;
+header {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-#имья {
- расмэр шрифта: 2эм;
+#name {
+  font-size: 2em;
 }
 
-основого {
-  дисплея: флекс;
-  обосновенное-содержанье: центр;
- направле изгиба: колонна;
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-#текстовый контейнер {
- белое пранство: придваритья упаковка;
- выравнивание: шлева;
- запольное: 15пх;
- макс-ширина: 800пх;
- маржа: авто;
- непрозрачность: 0;
-  переход: непрозрачность 2s легкость;
- з-индекс: 2; /* Текст Находительства в его */
-  позиция: относительный;
+#text-container {
+  white-space: pre-wrap;
+  text-align: left;
+  padding: 15px;
+  max-width: 800px;
+  margin: auto;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  z-index: 2; /* Текст находится выше всего */
+  position: relative;
 }
 
-@media (макс-ширина: 600пх) {
- #tekstovyj conteyner, #name {
- расмэр шрифта: 5вв;
- высота линии: 1,5;
+@media (max-width: 600px) {
+  #text-container, #name {
+    font-size: 5vw;
+    line-height: 1.5;
   }
- заголовок {
-    дисплея: блок;
+  header {
+    display: block;
   }
 }
 
-@media (мин-ширина: 601пх) {
- #tekstovyj conteyner, #name {
- размар шрифта: 18пх;
- выгота линии: 1,2;
+@media (min-width: 601px) {
+  #text-container, #name {
+    font-size: 18px;
+    line-height: 1.2;
   }
- заголовок {
-    дисплея: блок;
+  header {
+    display: block;
   }
 }
