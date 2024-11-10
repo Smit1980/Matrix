@@ -4,7 +4,7 @@ const C = document.querySelector("canvas"),
       $ = C.getContext("2d"),
       W = C.width = innerWidth,
       H = C.height = innerHeight;
-
+  
 const str = "А+Б0В-Г1Д=Е2Ё Ж3З И4Й К5Л М6Н О7П Р8С Т9У Ф!Х Ц?Ч Ш.ЩЪ,Ы Ь:ЭЮ;Я",
       matrix = str.split('');
 
