@@ -1,35 +1,55 @@
-консоль.журнал("Загружен сценарий матрицы");
+console.log("Typewriter script loaded");
 
-konst C = dokument.запросСелектор("хольст"),
- $ = С.getContext("2d"),
- W = С.ширина = внутреньяШирина,
- H = С.высота = внетреннийВысота;
+const container = document.getElementById("text-container");
+const lines = [
+  { text: "     Недвижимость:", tag: "<strong><u>" },
+  "    Экспертиза и управление недвижимыми активами",
+  "    Выкуп имущества с электронных торгов (ФЗ №127, ФЗ №159, ФЗ №229)",
+  "    Readivelopment",
+  "    Портфельные инвестиции",
+  "    Юридическая экспертиза в области недвижимости",
+  "    Стратегическое планирование и консалтинг",
+  "    Налоговый консалтинг, выявление и возврат налоговых переплат",
+  "",
+  { text: "         Information Technology:", tag: "<strong><u>" },
+  "    Разработка продуктов любой сложности",
+  "    Создание инновационных решений",
+  "    Уникальные AI-решения и профессиональные инструменты для автоматизации и оптимизации бизнес-процессов",
+  "    Глубокое машинное обучение и компьютерное зрение, ИИ",
+  "    Лицензирование профессионального программного обеспечения",
+  "    Оформления подписок на иностранные программные продукты",
+  "    Разработка систем контроля", 
+  "    Blockchain and Cryptocurrency - Market Asset Transactions", 
+];
 
-конст стр = "А+B0В-Г1Д=Е2Ё Ж3З И4ВУХОЙ К5Л М6Н О7П Р8С Т9У Ф!Х Ц?Ч. Ш. ЕЩЕ ОДНА ВЕЩЬ, Ы Ь:EUI;Я,
- матрица = ул.сплит('');
+let currentLine = 0;
+let index = 0;
 
-пустт шрифт = 11,
- kol = W /шрифт,
- арр = [];
+function typeWriter() {
+  if (currentLine < lines.length) {
+    let line = lines[currentLine];
+    if (typeof line === 'object') {
+      container.innerHTML += line.tag;
+      line = line.text;
+    }
 
-для(pucsty i = 0; я < col; i++) арр[i] = 1;
-
-функция ничья() {
- $.стилль запольная = "ргба(0, 0, 0, 05)";
- $.филлРект(0, 0, В, Ч);
-  
- $.стилль запольная = "#0f0";
- $.шрифт = шрифт + "px system-ui";
-  
-  для (pucsty i = 0; я < обр.длина; и++) {
- пустть thхst = matrica[Математика.этаж(Математика.случайный() * Матрица.длина)];
- $.заволниттекст(txt, i * шрифт, обр[i] * шрифт);
-    
-    если (арр[i] * шрифт > H & & Math.случайный() > 0,975) арр[i] = 0;
- арр[i]++;
+    if (index < line.length) {
+      container.innerHTML += line.charAt(index);
+      index++;
+      setTimeout(typeWriter, 25);
+    } else {
+      if (typeof lines[currentLine] === 'object') {
+        container.innerHTML += "</u></strong>";
+      }
+      container.innerHTML += '<br>';
+      index = 0;
+      currentLine++;
+      setTimeout(typeWriter, 250);
+      container.scrollTop = container.scrollHeight;
+    }
+  } else {
+    container.style.opacity = 1;
   }
 }
 
-наборИнтэрвал(ничья, 123);
-
-окно.добавитСлушатель событый('перерезмер', () => расположено.перезагрузить());
+typeWriter();
