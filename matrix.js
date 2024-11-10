@@ -1,55 +1,35 @@
-console.log("Typewriter script loaded");
+console.log("Matrix script loaded");
 
-const container = document.getElementById("text-container");
-const lines = [
-  { text: "     Недвижимость:", tag: "<strong><u>" },
-  "    Экспертиза и управление недвижимыми активами",
-  "    Выкуп имущества с электронных торгов (ФЗ №127, ФЗ №159, ФЗ №229)",
-  "    Readivelopment",
-  "    Портфельные инвестиции",
-  "    Юридическая экспертиза в области недвижимости",
-  "    Стратегическое планирование и консалтинг",
-  "    Налоговый консалтинг, выявление и возврат налоговых переплат",
-  "",
-  { text: "         Information Technology:", tag: "<strong><u>" },
-  "    Разработка продуктов любой сложности",
-  "    Создание инновационных решений",
-  "    Уникальные AI-решения и профессиональные инструменты для автоматизации и оптимизации бизнес-процессов",
-  "    Глубокое машинное обучение и компьютерное зрение, ИИ",
-  "    Лицензирование профессионального программного обеспечения",
-  "    Оформления подписок на иностранные программные продукты",
-  "    Разработка систем контроля", 
-  "    Blockchain and Cryptocurrency - Market Asset Transactions", 
-];
+const C = document.querySelector("canvas"),
+      $ = C.getContext("2d"),
+      W = C.width = innerWidth,
+      H = C.height = innerHeight;
 
-let currentLine = 0;
-let index = 0;
+const str = "А+Б0В-Г1Д=Е2Ё Ж3З И4Й К5Л М6Н О7П Р8С Т9У Ф!Х Ц?Ч Ш.ЩЪ,Ы Ь:ЭЮ;Я",
+      matrix = str.split('');
 
-function typeWriter() {
-  if (currentLine < lines.length) {
-    let line = lines[currentLine];
-    if (typeof line === 'object') {
-      container.innerHTML += line.tag;
-      line = line.text;
-    }
+let font = 11,
+    col = W / font,
+    arr = [];
 
-    if (index < line.length) {
-      container.innerHTML += line.charAt(index);
-      index++;
-      setTimeout(typeWriter, 25);
-    } else {
-      if (typeof lines[currentLine] === 'object') {
-        container.innerHTML += "</u></strong>";
-      }
-      container.innerHTML += '<br>';
-      index = 0;
-      currentLine++;
-      setTimeout(typeWriter, 250);
-      container.scrollTop = container.scrollHeight;
-    }
-  } else {
-    container.style.opacity = 1;
+for(let i = 0; i < col; i++) arr[i] = 1;
+
+function draw() {
+  $.fillStyle = "rgba(0, 0, 0, .05)";
+  $.fillRect(0, 0, W, H);
+  
+  $.fillStyle = "#0f0";
+  $.font = font + "px system-ui";
+  
+  for (let i = 0; i < arr.length; i++) {
+    let txt = matrix[Math.floor(Math.random() * matrix.length)];
+    $.fillText(txt, i * font, arr[i] * font);
+    
+    if (arr[i] * font > H && Math.random() > 0.975) arr[i] = 0;
+    arr[i]++;
   }
 }
 
-typeWriter();
+setInterval(draw, 123);
+
+window.addEventListener('resize', () => location.reload());
