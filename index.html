@@ -46,8 +46,11 @@
         if (currentLine < lines.length) {
           let line = lines[currentLine];
           let index = 0;
-          container.style.opacity = 1;
-          container.innerHTML += '<br>';
+
+          // Добавляем новую строку, если строка не пустая
+          if (currentLine > 0) {
+            container.innerHTML += '<br>';
+          }
 
           function typeLine() {
             if (typeof line === 'object') {
@@ -65,6 +68,8 @@
               }
               currentLine++;
               setTimeout(typeWriter, 500);
+              
+              // Скроллим вниз после завершения каждой строки
               container.scrollTop = container.scrollHeight;
             }
           }
