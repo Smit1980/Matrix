@@ -9,17 +9,17 @@
 <body>
   <canvas></canvas>
   <header>
-    <div id="name">Denis Shandalin <a href="https://dewiar.com/bwm/91834" style="color: white; text-decoration: underline;">Визитка</a></div>
+    <div id="name">Denis Shandalin <a href="https://dewiar.com/bwm/91834" style="color: white; text-decoration: underline;">➡️Визитка</a></div>
   </header>
   <main>
-    <div id="text-container" class="mobile"></div>
+    <div id="text-container" class="mobile" style="overflow-y: auto; max-height: 80vh;"></div>
   </main>
   <script src="matrix.js"></script>
   <script>
     setTimeout(() => {
       const container = document.getElementById("text-container");
       const lines = [
-        { text: "     It: Внедрение современных технологий на базе искусственного интеллекта в бизнес:", tag: "<strong><u>" },
+        { text: "     IT: Внедрение современных технологий на базе искусственного интеллекта в бизнес:", tag: "<strong><u>" },
         "    Автоматизация продаж: чат-боты и CRM для повышения эффективности маркетинга и продаж.",
         "    Персонализация контента: рекомендательные алгоритмы для повышения вовлечённости.",
         "    Прогноз спроса и запасов: Оптимизация запасов с анализом данных.",
@@ -46,11 +46,8 @@
         if (currentLine < lines.length) {
           let line = lines[currentLine];
           let index = 0;
-
-          // Добавляем новую строку, если строка не пустая
-          if (currentLine > 0) {
-            container.innerHTML += '<br>';
-          }
+          container.style.opacity = 1;
+          container.innerHTML += '<br>';
 
           function typeLine() {
             if (typeof line === 'object') {
@@ -68,9 +65,7 @@
               }
               currentLine++;
               setTimeout(typeWriter, 500);
-              
-              // Скроллим вниз после завершения каждой строки
-              container.scrollTop = container.scrollHeight;
+              container.scrollIntoView({ behavior: 'smooth', block: 'end' });
             }
           }
 
