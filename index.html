@@ -65,7 +65,7 @@
               }
               currentLine++;
               setTimeout(typeWriter, 500);
-              container.scrollIntoView({ behavior: 'smooth', block: 'end' });
+              container.scrollTop = container.scrollHeight;
             }
           }
 
